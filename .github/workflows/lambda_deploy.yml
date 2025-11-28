@@ -60,12 +60,12 @@ jobs:
         run: rm function.zip
         working-directory: ./boto3-delete-inventory-item
 
-      - name: Zip the boto3-get-inventory-item Lambda function
+      - name: Zip the boto3-get-inventory-items Lambda function
         run: zip function.zip lambda_function.py
-        working-directory: ./lambda/boto3-get-inventory-item
+        working-directory: ./lambda/boto3-get-inventory-items
       - name: Update Lambda function code
-        run: aws lambda update-function-code --function-name boto3-get-inventory-item --zip-file fileb://function.zip --publish
-        working-directory: ./lambda/boto3-get-inventory-item
-      - name: Cleanup boto3-get-inventory-item zip
+        run: aws lambda update-function-code --function-name boto3-get-inventory-items --zip-file fileb://function.zip --publish
+        working-directory: ./lambda/boto3-get-inventory-items
+      - name: Cleanup boto3-get-inventory-items zip
         run: rm function.zip
-        working-directory: ./lambda/boto3-get-inventory-item
+        working-directory: ./lambda/boto3-get-inventory-items
