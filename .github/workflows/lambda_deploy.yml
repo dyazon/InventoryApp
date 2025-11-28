@@ -29,3 +29,43 @@ jobs:
       - name: Cleanup boto3-get-all-inventory-items zip
         run: rm function.zip
         working-directory: ./lambda/boto3-get-all-inventory-items
+        
+      - name: Zip the boto3-get-inventory-items Lambda function
+        run: zip function.zip lambda_function.py
+        working-directory: ./lambda/boto3-get-inventory-items
+      - name: Update Lambda function code
+        run: aws lambda update-function-code --function-name boto3-get-inventory-items --zip-file fileb://function.zip --publish
+        working-directory: ./lambda/boto3-get-inventory-items
+      - name: Cleanup boto3-get-inventory-items zip
+        run: rm function.zip
+        working-directory: ./lambda/boto3-get-inventory-items
+
+      - name: Zip the boto3-get-location-inventory-item Lambda function
+        run: zip function.zip lambda_function.py
+        working-directory: ./lambda/boto3-get-location-inventory-item
+      - name: Update Lambda function code
+        run: aws lambda update-function-code --function-name boto3-get-location-inventory-item --zip-file fileb://function.zip --publish
+        working-directory: ./lambda/boto3-get-location-inventory-item
+      - name: Cleanup boto3-get-location-inventory-items zip
+        run: rm function.zip
+        working-directory: ./lambda/boto3-get-all-inventory-items
+
+      - name: Zip the boto3-create-new-item Lambda function
+        run: zip function.zip lambda_function.py
+        working-directory: ./lambda/boto3-create-new-item
+      - name: Update Lambda function code
+        run: aws lambda update-function-code --function-name boto3-create-new-item --zip-file fileb://function.zip --publish
+        working-directory: ./lambda/boto3-create-new-item
+      - name: Cleanup boto3-create-new-item zip
+        run: rm function.zip
+        working-directory: ./lambda/boto3-create-new-item
+
+      - name: Zip the boto3-delete-inventory-item Lambda function
+        run: zip function.zip lambda_function.py
+        working-directory: ./lambda/boto3-delete-inventory-item
+      - name: Update Lambda function code
+        run: aws lambda update-function-code --function-name boto3-delete-inventory-items --zip-file fileb://function.zip --publish
+        working-directory: ./lambda/boto3-delete-inventory-item
+      - name: Cleanup boto3-delete-inventory-item zip
+        run: rm function.zip
+        working-directory: ./boto3-delete-inventory-item
