@@ -5,7 +5,7 @@ on:
     branches:
       - 'main'
     paths:
-      - 'lambda/get_all_inventory_items/lambda_function.py'
+      - 'lambda/boto3-get-all-inventory-items/lambda_function.py'
 
 jobs:
   deploy:
@@ -20,12 +20,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
-      - name: Zip the get_all_inventory_items Lambda function
+      - name: Zip the boto3-get-all-inventory-items Lambda function
         run: zip function.zip lambda_function.py
-        working-directory: ./lambda/get_all_inventory_items
+        working-directory: ./lambda/boto3-get-all-inventory-items
       - name: Update Lambda function code
-        run: aws lambda update-function-code --function-name get_all_inventory_items --zip-file fileb://function.zip --publish
-        working-directory: ./lambda/get_all_inventory_items
-      - name: Cleanup get_all_inventory_items zip
+        run: aws lambda update-function-code --function-name boto3-get-all-inventory-items --zip-file fileb://function.zip --publish
+        working-directory: ./lambda/boto3-get-all-inventory-items
+      - name: Cleanup boto3-get-all-inventory-items zip
         run: rm function.zip
-        working-directory: ./lambda/get_all_inventory_items
+        working-directory: ./lambda/boto3-get-all-inventory-items
